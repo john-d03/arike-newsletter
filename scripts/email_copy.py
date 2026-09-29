@@ -18,6 +18,10 @@ def main(base, iid):
     html = src.read_text(encoding="utf-8")
     folder = f"{base}/newsletters/{year}/{month}/"
     html = re.sub(r'(src|href)="(assets/[^"]+)"', lambda m: f'{m.group(1)}="{folder}{m.group(2)}"', html)
+    # Mail tools reject external stylesheets and clients ignore web fonts; the inline Arial fallbacks take over.
+    html = re.sub(r'<link rel="preconnect"[^>]*>\n?', "", html)
+    html = re.sub(r'<link href="https://fonts\.googleapis\.com[^>]*>\n?', "", html)
+    html = re.sub(r"<!--\[if !mso\]><!--><style>@import url\('https://fonts\.googleapis\.com[^<]*</style><!--<!\[endif\]-->\n?", "", html)
     online = f"{base}/#issue/{iid}"
     # Zoho Campaigns expands these merge tags to full URLs at send time.
     html = html.replace(
