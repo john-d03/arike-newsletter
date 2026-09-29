@@ -1,0 +1,86 @@
+{
+  "organisation": "Arike Care",
+  "issues": [
+    {
+      "id": "2026-09",
+      "date": "2026-09-01",
+      "format": "pdf",
+      "file": "2026/09/2026-09-arikecare-newsletter.pdf",
+      "title": "Restoring Comfort Through Compassionate Care",
+      "issue": 39,
+      "thumbnail": "thumbnails/2026-09.jpg"
+    },
+    {
+      "id": "2026-08",
+      "date": "2026-08-01",
+      "format": "pdf",
+      "file": "2026/08/2026-08-arikecare-newsletter.pdf",
+      "title": "Why I Choose to Contribute",
+      "issue": 38,
+      "thumbnail": "thumbnails/2026-08.jpg"
+    },
+    {
+      "id": "2026-07",
+      "date": "2026-07-01",
+      "format": "pdf",
+      "file": "2026/07/2026-07-arikecare-newsletter.pdf",
+      "title": "Compassion in Action",
+      "issue": 37,
+      "thumbnail": "thumbnails/2026-07.jpg"
+    },
+    {
+      "id": "2026-05",
+      "date": "2026-05-01",
+      "format": "pdf",
+      "file": "2026/05/2026-05-arikecare-newsletter.pdf",
+      "title": "Care Beyond Family: A Community Comes Together",
+      "issue": 33,
+      "thumbnail": "thumbnails/2026-05.jpg"
+    },
+    {
+      "id": "2026-04",
+      "date": "2026-04-01",
+      "format": "pdf",
+      "file": "2026/04/2026-04-arikecare-newsletter.pdf",
+      "title": "Life changed in a moment",
+      "issue": 34,
+      "thumbnail": "thumbnails/2026-04.jpg"
+    },
+    {
+      "id": "2026-03",
+      "date": "2026-03-01",
+      "format": "pdf",
+      "file": "2026/03/2026-03-arikecare-newsletter.pdf",
+      "title": "Corporate Volunteers Gain Exposure to Palliative Care",
+      "issue": 33,
+      "thumbnail": "thumbnails/2026-03.jpg"
+    },
+    {
+      "id": "2026-02",
+      "date": "2026-02-01",
+      "format": "pdf",
+      "file": "2026/02/2026-02-arikecare-newsletter.pdf",
+      "title": "The Al-Ameen Giving Box: Supporting Palliative Care",
+      "issue": 32,
+      "thumbnail": "thumbnails/2026-02.jpg"
+    },
+    {
+      "id": "2026-01",
+      "date": "2026-01-01",
+      "format": "pdf",
+      "file": "2026/01/2026-01-arikecare-newsletter.pdf",
+      "title": "Happy New Year 2026",
+      "issue": 31,
+      "thumbnail": "thumbnails/2026-01.jpg"
+    },
+    {
+      "id": "2025-06",
+      "date": "2025-06-01",
+      "format": "pdf",
+      "file": "2025/06/2025-06-arikecare-newsletter.pdf",
+      "title": "Soulful Connections",
+      "issue": 24,
+      "thumbnail": "thumbnails/2025-06.jpg"
+    }
+  ]
+}
