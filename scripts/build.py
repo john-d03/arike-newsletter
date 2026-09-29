@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Scan public/newsletters/YYYY/MM/ for .pdf/.html issues, render covers and write index.json.
+"""Scan public/newsletters/YYYY/MM/ for .pdf/.html issues, render covers, export web editions to PDF
+and write index.json.
 
 Usage: python3 scripts/build.py [--force]
-Requires PyMuPDF (pip install pymupdf). HTML covers use Google Chrome headless if present.
+Requires PyMuPDF (pip install pymupdf). HTML covers and PDF exports use Google Chrome headless if present.
 """
 import json, re, subprocess, sys
 from html.parser import HTMLParser
@@ -12,6 +13,7 @@ import fitz  # PyMuPDF
 
 ROOT = Path(__file__).resolve().parent.parent / "public" / "newsletters"
 THUMBS = ROOT / "thumbnails"
+EXPORTS = ROOT / "exports"
 COVER_WIDTH = 640
 FORCE = "--force" in sys.argv
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -110,15 +112,27 @@ def html_cover(path, out):
     return True
 
 
+# Converts a web edition to a print-quality PDF with Chrome's print engine (vector text, real page breaks).
+def html_pdf(path, out):
+    if not Path(CHROME).exists():
+        return False
+    cmd = [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+           "--virtual-time-budget=8000", "--run-all-compositor-stages-before-draw",
+           f"--print-to-pdf={out}", path.resolve().as_uri()]
+    subprocess.run(cmd, check=True, capture_output=True, timeout=120)
+    return out.exists()
+
+
 def main():
     THUMBS.mkdir(exist_ok=True)
+    EXPORTS.mkdir(exist_ok=True)
     issues = []
     months = {}
     for f in sorted(ROOT.glob("[0-9][0-9][0-9][0-9]/[0-9][0-9]/*.*")):
         if f.suffix.lower() in (".pdf", ".html"):
             months.setdefault((f.parent.parent.name, f.parent.name), {})[f.suffix.lower()[1:]] = f
 
-    # A month may carry both: the web edition is read in the stand, the PDF is what gets downloaded.
+    # A month may carry both: the web edition is what gets read; the PDF only supplies the cover and metadata.
     for (year, month), files in months.items():
         iid = f"{year}-{month}"
         pdf, html = files.get("pdf"), files.get("html")
@@ -135,6 +149,10 @@ def main():
             if not pdf and (FORCE or not cover.exists()):
                 if not html_cover(html, cover):
                     print(f"  ! no Chrome found, skipped cover for {html.name}")
+            export = EXPORTS / f"{iid}.pdf"
+            if FORCE or not export.exists() or export.stat().st_mtime < html.stat().st_mtime:
+                if not html_pdf(html, export):
+                    print(f"  ! no Chrome found, skipped PDF export for {html.name}")
 
         primary = html or pdf
         fmt = "html" if html else "pdf"
@@ -145,8 +163,8 @@ def main():
             "file": primary.relative_to(ROOT).as_posix(),
             "title": title or month_title(year, month),
         }
-        if html and pdf:
-            entry["pdf"] = pdf.relative_to(ROOT).as_posix()
+        if html and (EXPORTS / f"{iid}.pdf").exists():
+            entry["pdf"] = f"exports/{iid}.pdf"
         if issue_no:
             entry["issue"] = issue_no
         if cover.exists():

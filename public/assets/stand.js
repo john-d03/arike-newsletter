@@ -43,8 +43,9 @@
 
   const fileUrl = (issue) => BASE + issue.file;
   const isHtml = (issue) => issue.format === "html";
-  const hasPdf = (issue) => !isHtml(issue) || Boolean(issue.pdf);
-  const downloadLabel = (issue) => (hasPdf(issue) ? "Download PDF" : "Download as PDF");
+  // Web editions ship a Chrome-printed PDF from the build; in-browser conversion is the fallback.
+  const needsConversion = (issue) => isHtml(issue) && !issue.pdf;
+  const downloadLabel = (issue) => (needsConversion(issue) ? "Download as PDF" : "Download PDF");
   const issueLabel = (issue) => (issue.issue ? `Issue ${issue.issue} · ` : "") + fmtDate(issue.date);
 
   // Lucide icons, 2px stroke, inherit text colour.
@@ -255,10 +256,9 @@
   }
 
   function downloadFile(issue) {
-    const path = issue.pdf || issue.file;
     const a = document.createElement("a");
-    a.href = BASE + path;
-    a.download = path.split("/").pop();
+    a.href = BASE + (issue.pdf || issue.file);
+    a.download = issue.file.split("/").pop().replace(/\.html?$/i, ".pdf");
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -276,6 +276,18 @@
     });
   }
 
+  // Script-rendered issues (React web editions) fill the body after the load event.
+  async function waitForContent(doc, ms = 8000) {
+    const start = performance.now();
+    let last = -1;
+    while (performance.now() - start < ms) {
+      const h = doc.body ? doc.body.scrollHeight : 0;
+      if (h > 1000 && h === last) return;
+      last = h;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+
   async function downloadHtmlAsPdf(issue, trigger) {
     trigger.disabled = true;
     setStatus("Preparing your PDF…");
@@ -284,20 +296,26 @@
       const [html2pdf, f] = await Promise.all([loadHtml2Pdf(), loadIssueDocument(issue)]);
       hidden = f;
       const doc = f.contentDocument;
+      await waitForContent(doc);
       await Promise.all(Array.from(doc.images).filter((img) => !img.complete).map(
         (img) => new Promise((r) => { img.onload = img.onerror = r; })
       ));
       if (doc.fonts && doc.fonts.ready) await doc.fonts.ready;
+
+      // html2canvas clones the page under this document's URL; anchor relative asset URLs to the issue's folder.
+      const base = doc.createElement("base");
+      base.href = f.src;
+      doc.head.prepend(base);
 
       const target = doc.querySelector("[data-pdf-root]") || doc.body;
       await html2pdf()
         .set({
           margin: 0,
           filename: issue.file.split("/").pop().replace(/\.html?$/i, ".pdf"),
-          image: { type: "jpeg", quality: 0.95 },
-          html2canvas: { scale: 2, useCORS: true, windowWidth: 794 },
+          image: { type: "jpeg", quality: 0.92 },
+          html2canvas: { scale: 2, useCORS: true, windowWidth: 794, scrollX: 0, scrollY: 0, logging: false },
           jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"] },
+          pagebreak: { mode: ["css", "legacy"], avoid: ["img", "figure", "h1", "h2", "h3", "blockquote"] },
         })
         .from(target)
         .save();
@@ -313,8 +331,8 @@
   }
 
   function download(issue, trigger) {
-    if (hasPdf(issue)) downloadFile(issue);
-    else downloadHtmlAsPdf(issue, trigger);
+    if (needsConversion(issue)) downloadHtmlAsPdf(issue, trigger);
+    else downloadFile(issue);
   }
 
   // Events
