@@ -113,31 +113,40 @@ def html_cover(path, out):
 def main():
     THUMBS.mkdir(exist_ok=True)
     issues = []
-    files = sorted(list(ROOT.glob("[0-9][0-9][0-9][0-9]/[0-9][0-9]/*.pdf"))
-                   + list(ROOT.glob("[0-9][0-9][0-9][0-9]/[0-9][0-9]/*.html")))
-    for f in files:
-        year, month = f.parent.parent.name, f.parent.name
+    months = {}
+    for f in sorted(ROOT.glob("[0-9][0-9][0-9][0-9]/[0-9][0-9]/*.*")):
+        if f.suffix.lower() in (".pdf", ".html"):
+            months.setdefault((f.parent.parent.name, f.parent.name), {})[f.suffix.lower()[1:]] = f
+
+    # A month may carry both: the web edition is read in the stand, the PDF is what gets downloaded.
+    for (year, month), files in months.items():
         iid = f"{year}-{month}"
-        fmt = "pdf" if f.suffix.lower() == ".pdf" else "html"
+        pdf, html = files.get("pdf"), files.get("html")
         cover = THUMBS / f"{iid}.jpg"
 
-        if fmt == "pdf":
-            issue_no, title = pdf_meta(f)
+        issue_no = title = None
+        if pdf:
+            issue_no, title = pdf_meta(pdf)
             if FORCE or not cover.exists():
-                pdf_cover(f, cover)
-        else:
-            issue_no, title = html_meta(f)
-            if FORCE or not cover.exists():
-                if not html_cover(f, cover):
-                    print(f"  ! no Chrome found, skipped cover for {f.name}")
+                pdf_cover(pdf, cover)
+        if html:
+            h_issue, h_title = html_meta(html)
+            issue_no, title = issue_no or h_issue, title or h_title
+            if not pdf and (FORCE or not cover.exists()):
+                if not html_cover(html, cover):
+                    print(f"  ! no Chrome found, skipped cover for {html.name}")
 
+        primary = html or pdf
+        fmt = "html" if html else "pdf"
         entry = {
             "id": iid,
             "date": f"{year}-{month}-01",
             "format": fmt,
-            "file": f.relative_to(ROOT).as_posix(),
+            "file": primary.relative_to(ROOT).as_posix(),
             "title": title or month_title(year, month),
         }
+        if html and pdf:
+            entry["pdf"] = pdf.relative_to(ROOT).as_posix()
         if issue_no:
             entry["issue"] = issue_no
         if cover.exists():

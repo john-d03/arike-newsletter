@@ -43,6 +43,8 @@
 
   const fileUrl = (issue) => BASE + issue.file;
   const isHtml = (issue) => issue.format === "html";
+  const hasPdf = (issue) => !isHtml(issue) || Boolean(issue.pdf);
+  const downloadLabel = (issue) => (hasPdf(issue) ? "Download PDF" : "Download as PDF");
   const issueLabel = (issue) => (issue.issue ? `Issue ${issue.issue} · ` : "") + fmtDate(issue.date);
 
   // Lucide icons, 2px stroke, inherit text colour.
@@ -78,7 +80,7 @@
           <p class="card-title">${escapeHtml(issue.title)}</p>
           <div class="card-actions">
             <button class="link-btn" data-open="${issue.id}">Read ${icons.arrow}</button>
-            <button class="round-btn" data-download="${issue.id}" aria-label="${isHtml(issue) ? "Download as PDF" : "Download PDF"}" title="${isHtml(issue) ? "Download as PDF" : "Download PDF"}">${icons.download}</button>
+            <button class="round-btn" data-download="${issue.id}" aria-label="${downloadLabel(issue)}" title="${downloadLabel(issue)}">${icons.download}</button>
           </div>
         </div>
       </article>`;
@@ -191,7 +193,7 @@
     vKicker.textContent = issueLabel(issue);
     vTitle.textContent = issue.title;
     vOpen.href = fileUrl(issue);
-    vDownloadLabel.textContent = isHtml(issue) ? "Download as PDF" : "Download PDF";
+    vDownloadLabel.textContent = downloadLabel(issue);
     vPrev.disabled = idx === 0;
     vNext.disabled = idx === issues.length - 1;
     setStatus("");
@@ -253,9 +255,10 @@
   }
 
   function downloadFile(issue) {
+    const path = issue.pdf || issue.file;
     const a = document.createElement("a");
-    a.href = fileUrl(issue);
-    a.download = issue.file.split("/").pop();
+    a.href = BASE + path;
+    a.download = path.split("/").pop();
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -310,8 +313,8 @@
   }
 
   function download(issue, trigger) {
-    if (isHtml(issue)) downloadHtmlAsPdf(issue, trigger);
-    else downloadFile(issue);
+    if (hasPdf(issue)) downloadFile(issue);
+    else downloadHtmlAsPdf(issue, trigger);
   }
 
   // Events

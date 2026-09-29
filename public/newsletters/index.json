@@ -4,9 +4,10 @@
     {
       "id": "2026-09",
       "date": "2026-09-01",
-      "format": "pdf",
-      "file": "2026/09/2026-09-arikecare-newsletter.pdf",
+      "format": "html",
+      "file": "2026/09/2026-09-arikecare-newsletter.html",
       "title": "Restoring Comfort Through Compassionate Care",
+      "pdf": "2026/09/2026-09-arikecare-newsletter.pdf",
       "issue": 39,
       "thumbnail": "thumbnails/2026-09.jpg"
     },
