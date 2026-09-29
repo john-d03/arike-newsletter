@@ -16,7 +16,9 @@
     @page{ size:A4; margin:8mm 0 10mm; }
     body{ background:#FFFFFF !important; }
     table[style*="max-width:600px"]{ zoom:1; }
-    img, table table{ break-inside:avoid; page-break-inside:avoid; }
+    img, p, table table, td[bgcolor="#1C1A17"], td[bgcolor="#FFC731"], td[bgcolor="#FFF6DC"], td[bgcolor="#E6F7F8"]{ break-inside:avoid; page-break-inside:avoid; }
+    td[height="20"]{ height:0 !important; line-height:0 !important; }
+    td[style*="padding:36px 40px 24px"]{ break-inside:avoid; page-break-inside:avoid; break-after:avoid; page-break-after:avoid; }
     h1, h2, h3{ break-after:avoid; page-break-after:avoid; }
   }
 </style>
