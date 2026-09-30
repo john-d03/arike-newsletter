@@ -132,7 +132,7 @@ def main():
         if f.suffix.lower() in (".pdf", ".html"):
             months.setdefault((f.parent.parent.name, f.parent.name), {})[f.suffix.lower()[1:]] = f
 
-    # A month may carry both: the web edition is what gets read; the PDF only supplies the cover and metadata.
+    # A month may carry both: the web edition is what gets read and shown as the cover; the PDF only supplies metadata.
     for (year, month), files in months.items():
         iid = f"{year}-{month}"
         pdf, html = files.get("pdf"), files.get("html")
@@ -141,12 +141,12 @@ def main():
         issue_no = title = None
         if pdf:
             issue_no, title = pdf_meta(pdf)
-            if FORCE or not cover.exists():
+            if not html and (FORCE or not cover.exists()):
                 pdf_cover(pdf, cover)
         if html:
             h_issue, h_title = html_meta(html)
             issue_no, title = issue_no or h_issue, title or h_title
-            if not pdf and (FORCE or not cover.exists()):
+            if FORCE or not cover.exists():
                 if not html_cover(html, cover):
                     print(f"  ! no Chrome found, skipped cover for {html.name}")
             export = EXPORTS / f"{iid}.pdf"
