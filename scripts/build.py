@@ -44,6 +44,9 @@ def pdf_meta(path):
             if not 90 < s["bbox"][1] < 420:
                 continue
             text = " ".join(x["text"].strip() for x in spans)
+            # Some covers are letter-spaced ("U n d e r s t a n d i n g  t h e"); collapse them.
+            if len(re.findall(r"\b\w\b", text)) > len(text.split()) / 2:
+                text = re.sub(r"\s+", " ", re.sub(r"(?<=\w) (?=\w)", "", text))
             if text == "24/7" or len(text) < 6:
                 continue
             title = text.rstrip(",.;:")
@@ -126,6 +129,9 @@ def html_pdf(path, out):
 def main():
     THUMBS.mkdir(exist_ok=True)
     EXPORTS.mkdir(exist_ok=True)
+    # Hand-set metadata for covers the extractor cannot read (missing or misprinted issue numbers).
+    overrides_path = ROOT / "overrides.json"
+    overrides = json.loads(overrides_path.read_text(encoding="utf-8")) if overrides_path.exists() else {}
     issues = []
     months = {}
     for f in sorted(ROOT.glob("[0-9][0-9][0-9][0-9]/[0-9][0-9]/*.*")):
@@ -169,8 +175,9 @@ def main():
             entry["issue"] = issue_no
         if cover.exists():
             entry["thumbnail"] = cover.relative_to(ROOT).as_posix()
+        entry.update(overrides.get(iid, {}))
         issues.append(entry)
-        print(f"  {iid}  {fmt:4}  #{issue_no or '--':<3} {entry['title']}")
+        print(f"  {iid}  {fmt:4}  #{entry.get('issue', '--'):<3} {entry['title']}")
 
     issues.sort(key=lambda e: e["date"], reverse=True)
     (ROOT / "index.json").write_text(
