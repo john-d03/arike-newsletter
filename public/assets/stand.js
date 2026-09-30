@@ -46,6 +46,8 @@
   // Web editions ship a Chrome-printed PDF from the build; in-browser conversion is the fallback.
   const needsConversion = (issue) => isHtml(issue) && !issue.pdf;
   const downloadLabel = (issue) => (needsConversion(issue) ? "Download as PDF" : "Download PDF");
+  // TEMP: PDF download is hidden for web editions until the export is signed off.
+  const canDownload = (issue) => !isHtml(issue);
   const issueLabel = (issue) => (issue.issue ? `Issue ${issue.issue} · ` : "") + fmtDate(issue.date);
 
   // Lucide icons, 2px stroke, inherit text colour.
@@ -81,7 +83,7 @@
           <p class="card-title">${escapeHtml(issue.title)}</p>
           <div class="card-actions">
             <button class="link-btn" data-open="${issue.id}">Read ${icons.arrow}</button>
-            <button class="round-btn" data-download="${issue.id}" aria-label="${downloadLabel(issue)}" title="${downloadLabel(issue)}">${icons.download}</button>
+            ${canDownload(issue) ? `<button class="round-btn" data-download="${issue.id}" aria-label="${downloadLabel(issue)}" title="${downloadLabel(issue)}">${icons.download}</button>` : ""}
           </div>
         </div>
       </article>`;
@@ -195,6 +197,7 @@
     vTitle.textContent = issue.title;
     vOpen.href = fileUrl(issue);
     vDownloadLabel.textContent = downloadLabel(issue);
+    vDownload.hidden = !canDownload(issue);
     vPrev.disabled = idx === 0;
     vNext.disabled = idx === issues.length - 1;
     setStatus("");

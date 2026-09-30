@@ -292,6 +292,7 @@ h1, h2, h3 { color: var(--text-heading); }
 .viewer-kicker { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-subtle); }
 .viewer-title { margin: 0; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .viewer-actions { display: flex; align-items: center; gap: 4px; }
+#viewer-download[hidden] { display: none; }
 .pager { display: inline-flex; padding: 2px; border-radius: var(--radius-pill); background: var(--surface-sunken); }
 
 .icon-btn {
