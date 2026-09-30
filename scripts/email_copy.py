@@ -17,7 +17,8 @@ def main(base, iid):
     src = ROOT / year / month / f"{iid}-arikecare-newsletter.html"
     html = src.read_text(encoding="utf-8")
     folder = f"{base}/newsletters/{year}/{month}/"
-    html = re.sub(r'(src|href)="(assets/[^"]+)"', lambda m: f'{m.group(1)}="{folder}{m.group(2)}"', html)
+    html = re.sub(r'(src|href|background)="(assets/[^"]+)"', lambda m: f'{m.group(1)}="{folder}{m.group(2)}"', html)
+    html = re.sub(r"url\('(assets/[^']+)'\)", lambda m: f"url('{folder}{m.group(1)}')", html)
     # Mail tools reject external stylesheets and clients ignore web fonts; the inline Arial fallbacks take over.
     html = re.sub(r'<link rel="preconnect"[^>]*>\n?', "", html)
     html = re.sub(r'<link href="https://fonts\.googleapis\.com[^>]*>\n?', "", html)
