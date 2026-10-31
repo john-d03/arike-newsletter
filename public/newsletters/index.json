@@ -7,9 +7,10 @@
       "format": "html",
       "file": "2026/10/2026-10-arikecare-newsletter.html",
       "title": "Teach me, and go to the next home",
-      "pdf": "exports/2026-10.pdf",
+      "pdf": "exports/2026-10.pdf?v=ced046ec",
       "issue": 40,
-      "thumbnail": "thumbnails/2026-10.jpg"
+      "version": "d9d53617",
+      "thumbnail": "thumbnails/2026-10.jpg?v=1dba22eb"
     },
     {
       "id": "2026-09",
@@ -17,9 +18,10 @@
       "format": "html",
       "file": "2026/09/2026-09-arikecare-newsletter.html",
       "title": "Restoring Comfort Through Compassionate Care",
-      "pdf": "exports/2026-09.pdf",
+      "pdf": "exports/2026-09.pdf?v=244d4fa6",
       "issue": 39,
-      "thumbnail": "thumbnails/2026-09.jpg"
+      "version": "718377fc",
+      "thumbnail": "thumbnails/2026-09.jpg?v=d679ac95"
     },
     {
       "id": "2026-08",
@@ -28,7 +30,7 @@
       "file": "2026/08/2026-08-arikecare-newsletter.pdf",
       "title": "Why I Choose to Contribute",
       "issue": 38,
-      "thumbnail": "thumbnails/2026-08.jpg"
+      "thumbnail": "thumbnails/2026-08.jpg?v=d68e6b27"
     },
     {
       "id": "2026-07",
@@ -37,7 +39,7 @@
       "file": "2026/07/2026-07-arikecare-newsletter.pdf",
       "title": "Compassion in Action",
       "issue": 37,
-      "thumbnail": "thumbnails/2026-07.jpg"
+      "thumbnail": "thumbnails/2026-07.jpg?v=bb894f29"
     },
     {
       "id": "2026-06",
@@ -46,7 +48,7 @@
       "file": "2026/06/2026-06-arikecare-newsletter.pdf",
       "title": "Nallapaadam 3.0: Supporting Young Learners",
       "issue": 36,
-      "thumbnail": "thumbnails/2026-06.jpg"
+      "thumbnail": "thumbnails/2026-06.jpg?v=fa014512"
     },
     {
       "id": "2026-05",
@@ -55,7 +57,7 @@
       "file": "2026/05/2026-05-arikecare-newsletter.pdf",
       "title": "Care Beyond Family: A Community Comes Together",
       "issue": 35,
-      "thumbnail": "thumbnails/2026-05.jpg"
+      "thumbnail": "thumbnails/2026-05.jpg?v=3feae52e"
     },
     {
       "id": "2026-04",
@@ -64,7 +66,7 @@
       "file": "2026/04/2026-04-arikecare-newsletter.pdf",
       "title": "Life changed in a moment",
       "issue": 34,
-      "thumbnail": "thumbnails/2026-04.jpg"
+      "thumbnail": "thumbnails/2026-04.jpg?v=3772328f"
     },
     {
       "id": "2026-03",
@@ -73,7 +75,7 @@
       "file": "2026/03/2026-03-arikecare-newsletter.pdf",
       "title": "Corporate Volunteers Gain Exposure to Palliative Care",
       "issue": 33,
-      "thumbnail": "thumbnails/2026-03.jpg"
+      "thumbnail": "thumbnails/2026-03.jpg?v=701c65a4"
     },
     {
       "id": "2026-02",
@@ -82,7 +84,7 @@
       "file": "2026/02/2026-02-arikecare-newsletter.pdf",
       "title": "The Al-Ameen Giving Box: Supporting Palliative Care",
       "issue": 32,
-      "thumbnail": "thumbnails/2026-02.jpg"
+      "thumbnail": "thumbnails/2026-02.jpg?v=f6c19d89"
     },
     {
       "id": "2026-01",
@@ -91,7 +93,7 @@
       "file": "2026/01/2026-01-arikecare-newsletter.pdf",
       "title": "Happy New Year 2026",
       "issue": 31,
-      "thumbnail": "thumbnails/2026-01.jpg"
+      "thumbnail": "thumbnails/2026-01.jpg?v=1f825da4"
     },
     {
       "id": "2025-11",
@@ -99,7 +101,7 @@
       "format": "pdf",
       "file": "2025/11/2025-11-arikecare-newsletter.pdf",
       "title": "A Refreshing Celebration of Companionship",
-      "thumbnail": "thumbnails/2025-11.jpg",
+      "thumbnail": "thumbnails/2025-11.jpg?v=9ae721c8",
       "issue": 29
     },
     {
@@ -109,7 +111,7 @@
       "file": "2025/09/2025-09-arikecare-newsletter.pdf",
       "title": "SNEHAVARNGAL: A CELEBRATION OF TOGETHERNESS",
       "issue": 27,
-      "thumbnail": "thumbnails/2025-09.jpg"
+      "thumbnail": "thumbnails/2025-09.jpg?v=bf10b556"
     },
     {
       "id": "2025-08",
@@ -118,7 +120,7 @@
       "file": "2025/08/2025-08-arikecare-newsletter.pdf",
       "title": "From Shadows to Strength: Mr. X’s Journey with Arike",
       "issue": 26,
-      "thumbnail": "thumbnails/2025-08.jpg"
+      "thumbnail": "thumbnails/2025-08.jpg?v=ebfb5e55"
     },
     {
       "id": "2025-07",
@@ -127,7 +129,7 @@
       "file": "2025/07/2025-07-arikecare-newsletter.pdf",
       "title": "The Arike Bulletin Turns Two",
       "issue": 25,
-      "thumbnail": "thumbnails/2025-07.jpg"
+      "thumbnail": "thumbnails/2025-07.jpg?v=e305d9d3"
     },
     {
       "id": "2025-06",
@@ -136,7 +138,7 @@
       "file": "2025/06/2025-06-arikecare-newsletter.pdf",
       "title": "Soulful Connections",
       "issue": 24,
-      "thumbnail": "thumbnails/2025-06.jpg"
+      "thumbnail": "thumbnails/2025-06.jpg?v=52ec6b50"
     },
     {
       "id": "2025-05",
@@ -145,7 +147,7 @@
       "file": "2025/05/2025-05-arikecare-newsletter.pdf",
       "title": "Meals That Heal",
       "issue": 23,
-      "thumbnail": "thumbnails/2025-05.jpg"
+      "thumbnail": "thumbnails/2025-05.jpg?v=bcc2555b"
     },
     {
       "id": "2025-04",
@@ -154,7 +156,7 @@
       "file": "2025/04/2025-04-arikecare-newsletter.pdf",
       "title": "Finding Light After Loss",
       "issue": 22,
-      "thumbnail": "thumbnails/2025-04.jpg"
+      "thumbnail": "thumbnails/2025-04.jpg?v=f36c5e52"
     },
     {
       "id": "2025-03",
@@ -163,7 +165,7 @@
       "file": "2025/03/2025-03-arikecare-newsletter.pdf",
       "title": "Collective Strength—- The Power of Small Contributions",
       "issue": 21,
-      "thumbnail": "thumbnails/2025-03.jpg"
+      "thumbnail": "thumbnails/2025-03.jpg?v=baf9d78b"
     },
     {
       "id": "2025-02",
@@ -172,7 +174,7 @@
       "file": "2025/02/2025-02-arikecare-newsletter.pdf",
       "title": "Compassion in Action: Buimerc India Foundation’s Visionary Support for Palliative Care",
       "issue": 20,
-      "thumbnail": "thumbnails/2025-02.jpg"
+      "thumbnail": "thumbnails/2025-02.jpg?v=2d79c774"
     },
     {
       "id": "2025-01",
@@ -180,7 +182,7 @@
       "format": "pdf",
       "file": "2025/01/2025-01-arikecare-newsletter.pdf",
       "title": "‘My Santa 2024’ : A Symphony of Joy and Togetherness",
-      "thumbnail": "thumbnails/2025-01.jpg",
+      "thumbnail": "thumbnails/2025-01.jpg?v=1bff7a50",
       "issue": 19
     },
     {
@@ -190,7 +192,7 @@
       "file": "2024/12/2024-12-arikecare-newsletter.pdf",
       "title": "Spread the Joy of Christmas with Arike",
       "issue": 18,
-      "thumbnail": "thumbnails/2024-12.jpg"
+      "thumbnail": "thumbnails/2024-12.jpg?v=c374dfba"
     },
     {
       "id": "2024-11",
@@ -199,7 +201,7 @@
       "file": "2024/11/2024-11-arikecare-newsletter.pdf",
       "title": "Echoes of Care: Reflections from Volunteers",
       "issue": 17,
-      "thumbnail": "thumbnails/2024-11.jpg"
+      "thumbnail": "thumbnails/2024-11.jpg?v=865c90ef"
     },
     {
       "id": "2024-10",
@@ -208,7 +210,7 @@
       "file": "2024/10/2024-10-arikecare-newsletter.pdf",
       "title": "Healing through Community Support",
       "issue": 16,
-      "thumbnail": "thumbnails/2024-10.jpg"
+      "thumbnail": "thumbnails/2024-10.jpg?v=97afeddb"
     },
     {
       "id": "2024-09",
@@ -217,7 +219,7 @@
       "file": "2024/09/2024-09-arikecare-newsletter.pdf",
       "title": "Celebrating 5 Years of Compassionate Care",
       "issue": 15,
-      "thumbnail": "thumbnails/2024-09.jpg"
+      "thumbnail": "thumbnails/2024-09.jpg?v=6a7e1985"
     },
     {
       "id": "2024-08",
@@ -226,7 +228,7 @@
       "file": "2024/08/2024-08-arikecare-newsletter.pdf",
       "title": "Transforming Lives Through Compassionate Care",
       "issue": 14,
-      "thumbnail": "thumbnails/2024-08.jpg"
+      "thumbnail": "thumbnails/2024-08.jpg?v=7a6c38af"
     },
     {
       "id": "2024-07",
@@ -235,7 +237,7 @@
       "file": "2024/07/2024-07-arikecare-newsletter.pdf",
       "title": "Celebrating Our First Anniversary",
       "issue": 13,
-      "thumbnail": "thumbnails/2024-07.jpg"
+      "thumbnail": "thumbnails/2024-07.jpg?v=ee3003b8"
     },
     {
       "id": "2024-06",
@@ -244,7 +246,7 @@
       "file": "2024/06/2024-06-arikecare-newsletter.pdf",
       "title": "Koode Volunteers: Making a Difference Beyond Medicine",
       "issue": 12,
-      "thumbnail": "thumbnails/2024-06.jpg"
+      "thumbnail": "thumbnails/2024-06.jpg?v=4d0a85fc"
     },
     {
       "id": "2024-05",
@@ -253,7 +255,7 @@
       "file": "2024/05/2024-05-arikecare-newsletter.pdf",
       "title": "From Isolation to Inclusion: Z's Dream Takes Flight",
       "issue": 11,
-      "thumbnail": "thumbnails/2024-05.jpg"
+      "thumbnail": "thumbnails/2024-05.jpg?v=face656f"
     },
     {
       "id": "2024-04",
@@ -262,7 +264,7 @@
       "file": "2024/04/2024-04-arikecare-newsletter.pdf",
       "title": "Medical and Social Support",
       "issue": 10,
-      "thumbnail": "thumbnails/2024-04.jpg"
+      "thumbnail": "thumbnails/2024-04.jpg?v=8cc85bfc"
     },
     {
       "id": "2024-03",
@@ -271,7 +273,7 @@
       "file": "2024/03/2024-03-arikecare-newsletter.pdf",
       "title": "Arike’s Neomotion Wheelchair Support",
       "issue": 9,
-      "thumbnail": "thumbnails/2024-03.jpg"
+      "thumbnail": "thumbnails/2024-03.jpg?v=143c7ffe"
     },
     {
       "id": "2024-02",
@@ -280,7 +282,7 @@
       "file": "2024/02/2024-02-arikecare-newsletter.pdf",
       "title": "Empowering Lives: Buimerc India Foundation's Compassionate Mission",
       "issue": 8,
-      "thumbnail": "thumbnails/2024-02.jpg"
+      "thumbnail": "thumbnails/2024-02.jpg?v=f06227f3"
     },
     {
       "id": "2024-01",
@@ -289,7 +291,7 @@
       "file": "2024/01/2024-01-arikecare-newsletter.pdf",
       "title": "A Journey with Arike Palliative Home Care",
       "issue": 7,
-      "thumbnail": "thumbnails/2024-01.jpg"
+      "thumbnail": "thumbnails/2024-01.jpg?v=56ad6a81"
     },
     {
       "id": "2023-12",
@@ -298,7 +300,7 @@
       "file": "2023/12/2023-12-arikecare-newsletter.pdf",
       "title": "Embracing Compassionate Care: The Growing Acceptance of Care Homes in Kerala",
       "issue": 6,
-      "thumbnail": "thumbnails/2023-12.jpg"
+      "thumbnail": "thumbnails/2023-12.jpg?v=4bc1b9b4"
     },
     {
       "id": "2023-11",
@@ -307,7 +309,7 @@
       "file": "2023/11/2023-11-arikecare-newsletter.pdf",
       "title": "Addressing the Silent Crisis: Elderly Abuse",
       "issue": 5,
-      "thumbnail": "thumbnails/2023-11.jpg"
+      "thumbnail": "thumbnails/2023-11.jpg?v=06929012"
     },
     {
       "id": "2023-10",
@@ -316,7 +318,7 @@
       "file": "2023/10/2023-10-arikecare-newsletter.pdf",
       "title": "Understanding the Unseen Battles of Dementia",
       "issue": 4,
-      "thumbnail": "thumbnails/2023-10.jpg"
+      "thumbnail": "thumbnails/2023-10.jpg?v=db729a6d"
     },
     {
       "id": "2023-09",
@@ -325,7 +327,7 @@
       "file": "2023/09/2023-09-arikecare-newsletter.pdf",
       "title": "September 2023 Bulletin",
       "issue": 3,
-      "thumbnail": "thumbnails/2023-09.jpg"
+      "thumbnail": "thumbnails/2023-09.jpg?v=fd0ac5d8"
     },
     {
       "id": "2023-08",
@@ -334,7 +336,7 @@
       "file": "2023/08/2023-08-arikecare-newsletter.pdf",
       "title": "August 2023 Bulletin",
       "issue": 2,
-      "thumbnail": "thumbnails/2023-08.jpg"
+      "thumbnail": "thumbnails/2023-08.jpg?v=0be69c07"
     },
     {
       "id": "2023-07",
@@ -343,7 +345,7 @@
       "file": "2023/07/2023-07-arikecare-newsletter.pdf",
       "title": "July 2023 Bulletin",
       "issue": 1,
-      "thumbnail": "thumbnails/2023-07.jpg"
+      "thumbnail": "thumbnails/2023-07.jpg?v=7a05c224"
     }
   ]
 }

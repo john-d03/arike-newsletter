@@ -41,7 +41,7 @@
   const escapeHtml = (s) =>
     String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  const fileUrl = (issue) => BASE + issue.file;
+  const fileUrl = (issue) => BASE + issue.file + (issue.version ? `?v=${issue.version}` : "");
   const isHtml = (issue) => issue.format === "html";
   // Web editions ship a Chrome-printed PDF from the build; in-browser conversion is the fallback.
   const needsConversion = (issue) => isHtml(issue) && !issue.pdf;

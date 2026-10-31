@@ -5,7 +5,7 @@ and write index.json.
 Usage: python3 scripts/build.py [--force]
 Requires PyMuPDF (pip install pymupdf). HTML covers and PDF exports use Google Chrome headless if present.
 """
-import json, re, subprocess, sys
+import hashlib, json, re, subprocess, sys
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -92,6 +92,11 @@ class HtmlMeta(HTMLParser):
             self._tag = None
 
 
+# Covers and exports keep fixed names, so a content hash in the URL stops browsers and the CDN serving a stale copy.
+def versioned(path):
+    return f"{path.relative_to(ROOT).as_posix()}?v={hashlib.sha1(path.read_bytes()).hexdigest()[:8]}"
+
+
 def html_meta(path):
     p = HtmlMeta()
     p.feed(path.read_text(encoding="utf-8"))
@@ -172,11 +177,13 @@ def main():
             "title": title or month_title(year, month),
         }
         if html and (EXPORTS / f"{iid}.pdf").exists():
-            entry["pdf"] = f"exports/{iid}.pdf"
+            entry["pdf"] = versioned(EXPORTS / f"{iid}.pdf")
         if issue_no:
             entry["issue"] = issue_no
+        if html:
+            entry["version"] = versioned(html).split("?v=")[1]
         if cover.exists():
-            entry["thumbnail"] = cover.relative_to(ROOT).as_posix()
+            entry["thumbnail"] = versioned(cover)
         entry.update(overrides.get(iid, {}))
         issues.append(entry)
         print(f"  {iid}  {fmt:4}  #{entry.get('issue', '--'):<3} {entry['title']}")
