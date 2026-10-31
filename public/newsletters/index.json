@@ -2,6 +2,16 @@
   "organisation": "Arike Care",
   "issues": [
     {
+      "id": "2026-10",
+      "date": "2026-10-01",
+      "format": "html",
+      "file": "2026/10/2026-10-arikecare-newsletter.html",
+      "title": "Teach me, and go to the next home",
+      "pdf": "exports/2026-10.pdf",
+      "issue": 40,
+      "thumbnail": "thumbnails/2026-10.jpg"
+    },
+    {
       "id": "2026-09",
       "date": "2026-09-01",
       "format": "html",

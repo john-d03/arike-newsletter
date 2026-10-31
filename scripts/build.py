@@ -71,6 +71,8 @@ class HtmlMeta(HTMLParser):
         self.text = ""
 
     def handle_starttag(self, tag, attrs):
+        if tag == "br" and self._tag:
+            self._buf.append(" ")
         if tag in ("title", "h1", "h2"):
             self._tag = tag
             self._buf = []
