@@ -23,6 +23,14 @@ def main(base, iid):
     html = re.sub(r'<link rel="preconnect"[^>]*>\n?', "", html)
     html = re.sub(r'<link href="https://fonts\.googleapis\.com[^>]*>\n?', "", html)
     html = re.sub(r"<!--\[if !mso\]><!--><style>@import url\('https://fonts\.googleapis\.com[^<]*</style><!--<!\[endif\]-->\n?", "", html)
+    # The email is light only: mail apps mix their own dark recolouring with the web edition's dark theme and the
+    # result is hard to read. Drop the dark block and tell clients that honour color-scheme not to invert.
+    html = re.sub(r"  /\* Dark mode.*?\n(?=  @media print)", "", html, flags=re.S)
+    html = html.replace('<meta name="color-scheme" content="light dark">', '<meta name="color-scheme" content="light only">')
+    html = html.replace('<meta name="supported-color-schemes" content="light dark">', '<meta name="supported-color-schemes" content="light only">')
+    # Gmail discards the whole <style> block if any rule is unsupported (@page, :has(), attribute selectors), which
+    # also loses the phone media queries. Print rules mean nothing in a mailbox, so the email keeps only those.
+    html = re.sub(r"  @media print\{.*?\n  \}\n", "", html, flags=re.S)
     online = f"{base}/#issue/{iid}"
     # Zoho Campaigns expands these merge tags to full URLs at send time.
     html = html.replace(
