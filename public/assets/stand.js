@@ -18,7 +18,7 @@
   const pdfStage = el("pdf-stage");
   const vKicker = el("viewer-kicker");
   const vTitle = el("viewer-title");
-  const vOpen = el("viewer-open");
+  const vFullscreen = el("viewer-fullscreen");
   const vPrev = el("viewer-prev");
   const vNext = el("viewer-next");
   const vDownload = el("viewer-download");
@@ -34,7 +34,7 @@
 
   el("year").textContent = new Date().getFullYear();
 
-  // Header, as on arikecare.org: glass once scrolled; the mobile menu closes on Escape or when widened past 768px.
+  // Header, as on arikecare.org: glass once scrolled; the mobile menu closes on Escape or when widened past 1024px.
   const header = el("site-header");
   const menuToggle = el("menu-toggle");
   const mobileNav = el("mobile-nav");
@@ -49,7 +49,7 @@
   }
   menuToggle.addEventListener("click", () => setMenu(mobileNav.hidden));
   mobileNav.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
-  window.addEventListener("resize", () => { if (window.innerWidth >= 768) setMenu(false); });
+  window.addEventListener("resize", () => { if (window.innerWidth >= 1024) setMenu(false); });
 
   const fmtDate = (iso) =>
     new Date(iso + "T00:00:00").toLocaleDateString("en-IN", { month: "long", year: "numeric" });
@@ -212,7 +212,6 @@
 
     vKicker.textContent = issueLabel(issue);
     vTitle.textContent = issue.title;
-    vOpen.href = fileUrl(issue);
     vDownloadLabel.textContent = downloadLabel(issue);
     vDownload.hidden = !canDownload(issue);
     vPrev.disabled = idx === 0;
@@ -238,12 +237,14 @@
       viewer.hidden = false;
       document.body.classList.add("viewer-open");
     }
-    el("viewer-back").focus();
+    // Move focus for screen readers without flashing the ring on mouse/touch opens.
+    el("viewer-back").focus({ focusVisible: false });
     if (pushHash) history.pushState({ id }, "", `#issue/${id}`);
   }
 
   function closeViewer({ pushHash = true } = {}) {
     if (viewer.hidden) return;
+    if (fullscreenElement()) exitFullscreen();
     viewer.hidden = true;
     pdfRenderToken++;
     pdfStage.innerHTML = "";
@@ -252,6 +253,25 @@
     current = null;
     if (pushHash) history.pushState({}, "", location.pathname);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  // Full screen covers the reader; iPhone Safari has no element full screen, so it opens the issue in a new tab.
+  const fullscreenElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+  const exitFullscreen = () => (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  const canFullscreen = () => !!(viewer.requestFullscreen || viewer.webkitRequestFullscreen);
+
+  function toggleFullscreen() {
+    if (fullscreenElement()) return exitFullscreen();
+    if (canFullscreen()) return (viewer.requestFullscreen || viewer.webkitRequestFullscreen).call(viewer);
+    if (current !== null) window.open(fileUrl(issues[current]), "_blank", "noopener");
+  }
+
+  function syncFullscreenButton() {
+    const on = !!fullscreenElement();
+    viewer.classList.toggle("is-fullscreen", on);
+    const label = on ? "Exit full screen" : "Full screen";
+    vFullscreen.setAttribute("aria-label", label);
+    vFullscreen.title = label;
   }
 
   function step(delta) {
@@ -368,6 +388,9 @@
   });
 
   el("viewer-back").addEventListener("click", () => closeViewer());
+  vFullscreen.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", syncFullscreenButton);
+  document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
   vPrev.addEventListener("click", () => step(-1));
   vNext.addEventListener("click", () => step(1));
   vDownload.addEventListener("click", () => {

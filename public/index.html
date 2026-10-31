@@ -6,7 +6,7 @@
   <title>Arike Newsletter Stand</title>
   <meta name="description" content="Read and download every issue of the Arike Care newsletter." />
   <meta name="theme-color" content="#F5F0E8" />
-  <link rel="stylesheet" href="assets/stand.css?v=8" />
+  <link rel="stylesheet" href="assets/stand.css?v=12" />
 </head>
 <body>
   <!-- Header and footer mirror arikecare.org (john-d03/arike2026: Navbar.tsx, Footer.tsx) -->
@@ -221,9 +221,10 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>
-        <a class="icon-btn" id="viewer-open" target="_blank" rel="noopener" aria-label="Open in new tab" title="Open in new tab">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-        </a>
+        <button class="icon-btn" id="viewer-fullscreen" aria-label="Full screen" title="Full screen">
+          <svg class="fs-enter" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          <svg class="fs-exit" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+        </button>
         <button class="btn btn-primary btn-sm" id="viewer-download">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
           <span id="viewer-download-label">Download PDF</span>
@@ -237,6 +238,6 @@
     </div>
   </div>
 
-  <script src="assets/stand.js?v=7" defer></script>
+  <script src="assets/stand.js?v=10" defer></script>
 </body>
 </html>

@@ -167,6 +167,10 @@ section[id] { scroll-margin-top: 6rem; }
   .header-cta { gap: 0.375rem; }
   .menu-toggle { padding: 0 10px; gap: 4px; }
 }
+@media (max-width: 359px) {
+  .get-care-badge { display: none; }
+  .menu-toggle span { display: none; }
+}
 
 @media (min-width: 640px) {
   .header-inner { height: 5rem; }
@@ -175,13 +179,11 @@ section[id] { scroll-margin-top: 6rem; }
   .get-care-badge { font-size: 11px; }
   .mobile-nav { padding: 0 2rem; }
 }
-@media (min-width: 768px) {
-  .primary-nav { display: flex; }
-  .menu-toggle, .mobile-nav { display: none !important; }
-}
+/* arike2026 shows the full nav from 768px, but its seven links overrun the Get Care button below 1024px */
 @media (min-width: 1024px) {
   .header-logo { height: 2.5rem; }
-  .primary-nav { gap: 1.5rem; }
+  .primary-nav { display: flex; gap: 1.5rem; }
+  .menu-toggle, .mobile-nav { display: none !important; }
 }
 @media (min-width: 1280px) { .supported { display: flex; } }
 
@@ -262,7 +264,7 @@ section[id] { scroll-margin-top: 6rem; }
 
 /* Archive */
 
-.archive { padding: clamp(3rem, 8vw, 7rem) 0; }
+.archive { padding-top: clamp(3rem, 8vw, 7rem); padding-bottom: clamp(3rem, 8vw, 7rem); }
 .archive-head {
   display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   margin-bottom: 40px;
@@ -373,12 +375,12 @@ section[id] { scroll-margin-top: 6rem; }
 .emergency a:hover { background: #FEE2E2; }
 
 .footer-main { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-.footer-main { display: grid; gap: 2rem; }
+.footer-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 .footer-logo { height: 2.75rem; width: auto; }
 .footer-legal { margin: 12px 0 0; max-width: 28rem; font-size: 14px; line-height: 1.625; color: rgba(255, 255, 255, 0.6); }
 .footer-reg ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; color: rgba(255, 255, 255, 0.7); }
 
-.footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.footer-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
 .footer-cols h3 { margin: 0 0 1rem; font-size: 1.125rem; color: var(--sand); }
 .contact-list { display: flex; flex-direction: column; gap: 12px; }
 .contact-list > a {
@@ -410,40 +412,60 @@ section[id] { scroll-margin-top: 6rem; }
 .footer-base a { color: rgba(255, 255, 255, 0.4); text-decoration: none; transition: color var(--fast) var(--ease); }
 .footer-base a:hover { color: rgba(255, 255, 255, 0.7); }
 
+/* Two footer columns only fit side by side once the address and pills have room */
+@media (max-width: 479px) {
+  .footer-cols { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
 @media (min-width: 640px) {
   .emergency { flex-direction: row; align-items: center; gap: 16px; }
   .footer-base { flex-direction: row; align-items: center; justify-content: space-between; text-align: left; }
 }
 @media (min-width: 1024px) {
-  .footer-main { grid-template-columns: 4fr 8fr; column-gap: 3rem; padding-top: 2rem; padding-bottom: 2rem; }
+  .footer-main { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: 3rem; padding-top: 2rem; padding-bottom: 2rem; }
   .footer-base { grid-column: 1 / -1; }
 }
 
 /* Viewer (same window overlay for PDF and HTML issues) */
 
-.viewer { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; background: var(--ink-900); }
+.viewer { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; background: var(--sand); }
 .viewer[hidden] { display: none; }
 
+/* Reader bar: a small floating pill on a sand strip, round icon buttons, issue tag beside the title */
 .viewer-bar {
-  display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 12px;
-  background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; gap: 8px; height: 38px; margin: 6px 8px; padding: 0 4px;
+  border-radius: var(--radius-pill); background: rgba(255, 255, 255, 0.92); box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-.viewer-meta { flex: 1; min-width: 0; }
-.viewer-kicker { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-subtle); }
-.viewer-title { margin: 0; font-family: var(--font); font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.viewer-actions { display: flex; align-items: center; gap: 4px; }
+.viewer-meta { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; }
+.viewer-kicker {
+  flex-shrink: 0; padding: 2px 9px; border-radius: var(--radius-pill); background: rgba(122, 158, 126, 0.14);
+  color: var(--sage-dark); font-size: 11px; font-weight: 500; white-space: nowrap;
+}
+.viewer-title {
+  margin: 0; min-width: 0; font-family: var(--font-display); font-size: 15px; font-weight: 400; color: var(--charcoal);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.viewer-actions { display: flex; align-items: center; gap: 2px; }
 #viewer-download[hidden] { display: none; }
-.pager { display: inline-flex; padding: 2px; border-radius: var(--radius-pill); background: var(--surface-sunken); }
+.viewer-actions .btn-sm { min-height: 30px; padding: 4px 12px; font-size: 12px; gap: 6px; }
+.viewer-actions .btn-sm svg { width: 14px; height: 14px; }
+.pager { display: inline-flex; gap: 2px; }
 
 .icon-btn {
-  display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-body);
-  background: transparent; border: 0; border-radius: var(--radius-pill); padding: 7px 10px; cursor: pointer; text-decoration: none;
-  transition: var(--control);
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 30px; height: 30px; padding: 0 8px;
+  font-size: 12px; font-weight: 500; color: var(--charcoal-light); background: transparent; border: 0;
+  border-radius: var(--radius-pill); cursor: pointer; text-decoration: none; transition: var(--control);
 }
-.icon-btn:hover { background: var(--surface-accent-soft); color: var(--text-accent); }
-.icon-btn[disabled] { opacity: 0.35; cursor: default; background: transparent; color: var(--text-body); }
+.icon-btn svg { width: 16px; height: 16px; }
+.icon-btn:hover { background: rgba(122, 158, 126, 0.14); color: var(--sage-dark); }
+.icon-btn:active { transform: scale(0.94); }
+.icon-btn[disabled] { opacity: 0.3; cursor: default; background: transparent; color: var(--charcoal-light); transform: none; }
+.icon-btn .fs-exit, .is-fullscreen .icon-btn .fs-enter { display: none; }
+.is-fullscreen .icon-btn .fs-exit { display: block; }
+#viewer-back { background: var(--sand); padding: 0 10px 0 8px; }
+#viewer-back:hover { background: rgba(122, 158, 126, 0.14); }
 
-.viewer-stage { position: relative; flex: 1; min-height: 0; }
+.viewer-stage { position: relative; flex: 1; min-height: 0; background: var(--ink-900); }
 .viewer-stage iframe { width: 100%; height: 100%; border: 0; background: #fff; }
 .viewer-stage iframe[hidden] { display: none; }
 
@@ -494,14 +516,15 @@ section[id] { scroll-margin-top: 6rem; }
   .toolbar { width: 100%; }
   .search { flex: 1; height: 44px; }
   .search input { min-width: 0; width: 100%; }
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .card-body { padding: 14px; }
   .card-month { font-size: 19px; }
   .link-btn, .round-btn { min-height: 44px; }
   .round-btn { width: 44px; height: 44px; }
-  .viewer-bar { gap: 8px; padding: 0 8px; padding-top: env(safe-area-inset-top); height: calc(56px + env(safe-area-inset-top)); }
-  .icon-btn { min-width: 44px; min-height: 44px; justify-content: center; }
-  #viewer-back span, #viewer-download-label, .pager { display: none; }
+  .viewer-bar { gap: 6px; margin-top: calc(6px + env(safe-area-inset-top)); }
+  .viewer-kicker, #viewer-back span, #viewer-download-label, .pager { display: none; }
+  #viewer-back { padding: 0; width: 30px; }
+  .viewer-actions .btn-sm { padding: 4px 8px; }
   .pdf-stage { padding: 12px 8px calc(32px + env(safe-area-inset-bottom)); }
 }
 
