@@ -5,35 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Arike Newsletter Stand</title>
   <meta name="description" content="Read and download every issue of the Arike Care newsletter." />
-  <meta name="theme-color" content="#FBF9F5" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/stand.css?v=6" />
+  <meta name="theme-color" content="#F5F0E8" />
+  <link rel="stylesheet" href="assets/stand.css?v=8" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="./" aria-label="Arike newsletter stand, home">
-        <img class="logo" src="assets/arike-logo.png" alt="Arike" width="347" height="116" />
-        <span class="brand-tag">Newsletter</span>
-      </a>
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#latest">Latest</a>
-        <a href="#archive">Archive</a>
-        <a href="https://arikecare.org" rel="noopener" target="_blank">arikecare.org</a>
+  <!-- Header and footer mirror arikecare.org (john-d03/arike2026: Navbar.tsx, Footer.tsx) -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <div class="header-brand">
+        <a class="header-home" href="https://arikecare.org/" aria-label="Arike home">
+          <img class="header-logo" src="assets/logo-arike.png" alt="Arike" width="471" height="154" />
+        </a>
+        <div class="supported">
+          <span class="supported-mark"><img src="assets/logo-ima.jpg" alt="IMA Cochin" width="32" height="32" /></span>
+          <span class="supported-text">
+            <span class="supported-label">Supported by</span>
+            <span class="supported-name">IMA Cochin</span>
+          </span>
+        </div>
+      </div>
+
+      <nav class="primary-nav" aria-label="Arike">
+          <a class="primary-link" href="https://arikecare.org/#about">About</a>
+          <a class="primary-link" href="https://arikecare.org/services">Services</a>
+          <a class="primary-link" href="https://arikecare.org/understand">Understand Why</a>
+          <a class="primary-link" href="https://arikecare.org/programmes">Programmes</a>
+          <a class="primary-link" href="https://arikecare.org/stories">Stories</a>
+          <a class="primary-link" href="./" aria-current="page">Newsletter</a>
+          <a class="primary-link" href="https://arikecare.org/donate">Donate</a>
       </nav>
-      <a class="btn btn-outline btn-sm" href="tel:+917034336999">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Call us
-      </a>
+
+      <div class="header-cta">
+        <a class="get-care" href="https://arikecare.org/get-care">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Get Care</span>
+          <span class="get-care-badge"><span class="pulse" aria-hidden="true"></span>24/7</span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span>Menu</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Arike">
+          <a class="mobile-link" href="https://arikecare.org/#about">About</a>
+          <a class="mobile-link" href="https://arikecare.org/services">Services</a>
+          <a class="mobile-link" href="https://arikecare.org/understand">Understand Why</a>
+          <a class="mobile-link" href="https://arikecare.org/programmes">Programmes</a>
+          <a class="mobile-link" href="https://arikecare.org/stories">Stories</a>
+          <a class="mobile-link" href="./" aria-current="page">Newsletter</a>
+          <a class="mobile-link" href="https://arikecare.org/donate">Donate</a>
+      </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero container" id="latest" aria-labelledby="hero-title">
+    <section class="page-hero" id="latest" aria-labelledby="hero-title">
+    <div class="hero container">
       <div class="hero-copy">
-        <p class="eyebrow">Arike Care · Official newsletter</p>
+        <p class="eyebrow-pill"><span class="dot" aria-hidden="true"></span>Arike Care · Official newsletter</p>
         <h1 id="hero-title">Stories of care,<br /><em>delivered every month.</em></h1>
         <p class="lede">
           Highlights from our home visits, volunteers and the families we walk alongside in Ernakulam.
@@ -42,6 +74,7 @@
         <div class="hero-actions" id="hero-actions"></div>
       </div>
       <div class="hero-cover" id="hero-cover"></div>
+    </div>
     </section>
 
     <section class="archive container" id="archive" aria-labelledby="archive-title">
@@ -63,22 +96,108 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo"><img src="assets/arike-logo.png" alt="Arike" width="347" height="116" /></div>
-        <p>Arike Care<br />43/707, P.K. Nair Road, Palarivattom<br />Ernakulam 682025</p>
-      </div>
-      <div class="footer-col">
-        <h3>Contact</h3>
-        <a href="mailto:info@arikecare.org">info@arikecare.org</a>
-        <a href="tel:+917034336999">+91 7034 336999</a>
-        <a href="https://arikecare.org" rel="noopener" target="_blank">arikecare.org</a>
+  <section class="partners" aria-label="Partners">
+    <div class="container">
+      <div class="marquee">
+        <div class="marquee-track">
+            <div class="partner"><img src="assets/partners/open-healthcare-network.png" alt="Open Healthcare Network" width="64" height="64" loading="lazy" /><span><span class="partner-name">Open Healthcare Network</span><span class="partner-role">Technology Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/zoho.png" alt="Zoho" width="64" height="64" loading="lazy" /><span><span class="partner-name">Zoho</span><span class="partner-role">Technology Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/ima-cochin.png" alt="IMA Cochin" width="64" height="64" loading="lazy" /><span><span class="partner-name">IMA Cochin</span><span class="partner-role">Advisory Member</span></span></div>
+            <div class="partner"><img src="assets/partners/pallium-india.png" alt="Pallium India" width="64" height="64" loading="lazy" /><span><span class="partner-name">Pallium India</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/iapc-kerala.png" alt="IAPC Kerala" width="64" height="64" loading="lazy" /><span><span class="partner-name">IAPC Kerala</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/mehac-foundation.png" alt="MEHAC Foundation" width="64" height="64" loading="lazy" /><span><span class="partner-name">MEHAC Foundation</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/mind.png" alt="MIND" width="64" height="64" loading="lazy" /><span><span class="partner-name">MIND</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/esip-ernakulam.png" alt="ESIP Ernakulam" width="64" height="64" loading="lazy" /><span><span class="partner-name">ESIP Ernakulam</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner"><img src="assets/partners/mantle-solutions.png" alt="Mantle Solutions" width="64" height="64" loading="lazy" /><span><span class="partner-name">Mantle Solutions</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/synergy-oceanic-services.png" alt="Synergy Oceanic Services" width="64" height="64" loading="lazy" /><span><span class="partner-name">Synergy Oceanic Services</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/geojit-foundation.png" alt="Geojit Foundation" width="64" height="64" loading="lazy" /><span><span class="partner-name">Geojit Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/iap-kerala.png" alt="IAP Kerala" width="64" height="64" loading="lazy" /><span><span class="partner-name">IAP Kerala</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/association-of-physicians-of-india.png" alt="Association of Physicians of India" width="64" height="64" loading="lazy" /><span><span class="partner-name">Association of Physicians of India</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/buimerc-india-foundation.png" alt="Buimerc India Foundation" width="64" height="64" loading="lazy" /><span><span class="partner-name">Buimerc India Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/cvj-foundation.png" alt="CVJ Foundation" width="64" height="64" loading="lazy" /><span><span class="partner-name">CVJ Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/gtn-group.png" alt="GTN Group" width="64" height="64" loading="lazy" /><span><span class="partner-name">GTN Group</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/muthoot-group.png" alt="Muthoot Group" width="64" height="64" loading="lazy" /><span><span class="partner-name">Muthoot Group</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner"><img src="assets/partners/dentcare-dental-lab.png" alt="Dentcare Dental Lab" width="64" height="64" loading="lazy" /><span><span class="partner-name">Dentcare Dental Lab</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/open-healthcare-network.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Open Healthcare Network</span><span class="partner-role">Technology Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/zoho.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Zoho</span><span class="partner-role">Technology Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/ima-cochin.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">IMA Cochin</span><span class="partner-role">Advisory Member</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/pallium-india.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Pallium India</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/iapc-kerala.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">IAPC Kerala</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/mehac-foundation.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">MEHAC Foundation</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/mind.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">MIND</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/esip-ernakulam.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">ESIP Ernakulam</span><span class="partner-role">Strategy Partner</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/mantle-solutions.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Mantle Solutions</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/synergy-oceanic-services.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Synergy Oceanic Services</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/geojit-foundation.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Geojit Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/iap-kerala.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">IAP Kerala</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/association-of-physicians-of-india.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Association of Physicians of India</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/buimerc-india-foundation.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Buimerc India Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/cvj-foundation.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">CVJ Foundation</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/gtn-group.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">GTN Group</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/muthoot-group.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Muthoot Group</span><span class="partner-role">Sponsor</span></span></div>
+            <div class="partner" aria-hidden="true"><img src="assets/partners/dentcare-dental-lab.png" alt="" width="64" height="64" loading="lazy" /><span><span class="partner-name">Dentcare Dental Lab</span><span class="partner-role">Sponsor</span></span></div>
+        </div>
       </div>
     </div>
-    <div class="container footer-base">
-      <span>© <span id="year"></span> Arike Care</span>
-      <span>Call us 24/7 - 365 days a year.</span>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="emergency" role="note" aria-label="Medical emergency notice">
+        <span class="emergency-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Medical emergency?</span>
+        <p>Call <a href="tel:108">108</a> (ambulance) or <a href="tel:112">112</a> (emergency). Arike provides home-based care for chronic conditions, not acute emergencies.</p>
+      </div>
+    </div>
+
+    <div class="container footer-main">
+      <div class="footer-reg">
+        <img class="footer-logo" src="assets/logo-arike.png" alt="Arike" width="471" height="154" />
+        <p class="footer-legal">Legal name: Arike Daycare Nurses</p>
+        <ul>
+          <li>Supported by IMA Cochin</li>
+          <li>CSR-1 Registered</li>
+          <li>80G Certified</li>
+        </ul>
+      </div>
+
+      <div class="footer-cols">
+        <div>
+          <h3>Contact</h3>
+          <div class="contact-list">
+            <a href="tel:+917036336999"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +91 703 633 6999</a>
+            <a href="mailto:info@arikecare.org"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> info@arikecare.org</a>
+            <a class="contact-address" href="https://maps.app.goo.gl/d1NpDsD77wBT8Frn7" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> #43-707, P K Nair Rd, Palarivattom, Ernakulam, Kerala 682025</a>
+            <div class="socials">
+              <a class="social" href="https://instagram.com/arikecare" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+              <a class="social" href="https://facebook.com/arikecare" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.6V3.7c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H7.8V13h2.7v8h3Z"/></svg></a>
+              <a class="social" href="https://linkedin.com/company/arikecare" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.5" cy="6.8" r="1.8"/><rect x="4.9" y="9.6" width="3.2" height="9.9"/><path d="M10.2 9.6h3v1.4c.5-.9 1.6-1.6 3.1-1.6 2.9 0 3.6 1.9 3.6 4.4v5.7h-3.2v-5c0-1.2-.1-2.3-1.5-2.3s-1.7 1.1-1.7 2.2v5.1h-3.2V9.6Z"/></svg></a>
+              <a class="social" href="https://youtube.com/@arikecare" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10.2 9.2 4.6 2.8-4.6 2.8V9.2Z" fill="currentColor" stroke="none"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <div class="explore">
+            <a class="explore-link" href="https://arikecare.org/">Home</a>
+            <a class="explore-link" href="https://arikecare.org/#about">About</a>
+            <a class="explore-link" href="https://arikecare.org/services">Services</a>
+            <a class="explore-link" href="https://arikecare.org/understand">Understand</a>
+            <a class="explore-link" href="https://arikecare.org/programmes">Programmes</a>
+            <a class="explore-link" href="https://arikecare.org/stories">Stories</a>
+            <a class="explore-link" href="./">Newsletter</a>
+            <a class="explore-link" href="https://arikecare.org/donate">Donate</a>
+            <a class="explore-link" href="https://arikecare.org/volunteer">Volunteer</a>
+            <a class="explore-link" href="https://arikecare.org/transparency">Transparency</a>
+            <a class="explore-link" href="https://arikecare.org/annual-report">Annual Report</a>
+            <a class="explore-link" href="https://arikecare.org/get-care">Get Care</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-base">
+        <p>© <span id="year"></span> Arike Home Care, Non Profit NGO, Kerala.</p>
+        <a href="https://arikecare.org/privacy">Privacy Policy</a>
+      </div>
     </div>
   </footer>
 
@@ -118,6 +237,6 @@
     </div>
   </div>
 
-  <script src="assets/stand.js?v=6" defer></script>
+  <script src="assets/stand.js?v=7" defer></script>
 </body>
 </html>

@@ -34,6 +34,23 @@
 
   el("year").textContent = new Date().getFullYear();
 
+  // Header, as on arikecare.org: glass once scrolled; the mobile menu closes on Escape or when widened past 768px.
+  const header = el("site-header");
+  const menuToggle = el("menu-toggle");
+  const mobileNav = el("mobile-nav");
+
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 20);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  function setMenu(open) {
+    mobileNav.hidden = !open;
+    menuToggle.setAttribute("aria-expanded", String(open));
+  }
+  menuToggle.addEventListener("click", () => setMenu(mobileNav.hidden));
+  mobileNav.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+  window.addEventListener("resize", () => { if (window.innerWidth >= 768) setMenu(false); });
+
   const fmtDate = (iso) =>
     new Date(iso + "T00:00:00").toLocaleDateString("en-IN", { month: "long", year: "numeric" });
   const fmtMonth = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-IN", { month: "long" });
@@ -358,6 +375,7 @@
   });
 
   document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !mobileNav.hidden) setMenu(false);
     if (viewer.hidden) return;
     if (e.key === "Escape") closeViewer();
     if (e.key === "ArrowLeft") step(-1);
